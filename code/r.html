@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://kit.fontawesome.com/64d58efce2.js" crossorigin="anonymous"></script>
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <link rel="stylesheet" href="r.css"/>
+    <title>Register</title>
+</head>
+<body>
+    <div class="wrapper">
+        <form action="">
+            <h1>Registration</h1>
+            <!-- User Type (Student or Teacher) -->
+                            <div class="input-filed">
+                                <label for="student" class="user-type-label">Are you a student or teacher?</label>
+                                <input type="radio" id="student" name="user-type" value="student" required autofocus>
+                                <label for="student" class="user-type-label">Student</label>
+<!--                                 
+                                <label for="teacher" class="user-type-label">Are you a teacher?</label> -->
+                                <input type="radio" id="teacher" name="user-type" value="teacher" required>
+                                <label for="teacher" class="user-type-label">Teacher</label>
+                            </div>
+
+                            <div class="input-box">
+                            <!-- First Name -->
+                            <div class="input-filed">
+                                <i class='bx bxs-user'></i>
+                                <input type="text" placeholder="First Name" name="first-name" required>
+                            </div>
+
+                            <!-- Last Name -->
+                            <div class="input-filed">
+                                    <i class='bx bxs-user'></i>
+                                <input type="text" placeholder="Last Name" name="last-name" required>
+                            </div>
+                            </div>
+                        <div class="input-box">
+                            <!-- Phone Number -->
+                            <div class="input-filed">
+                                <i class='bx bxs-phone'></i>
+                                <input type="tel" placeholder="Phone Number" name="phone" required>
+                            </div>
+
+                            <!-- Email -->
+                            <div class="input-filed">
+                                <i class='bx bxl-gmail'></i>
+                                <input type="email" placeholder="Email" name="email" required>
+                            </div>
+                        </div>
+                    <div class="input-box">
+                            <!-- Password -->
+                            <div class="input-filed">
+                                <i class='bx bxs-lock-open'></i>
+                                <input type="password" placeholder="Password" name="password" required>
+                            </div>
+
+                            <!-- Confirm Password -->
+                            <div class="input-filed">
+                                <i class='bx bxs-lock'></i>
+                                <input type="password" placeholder="Confirm Password" name="confirm-password" required>
+                            </div>
+                    </div>
+                    <div class="input-box">
+                            <!-- Domain (visible only if student is selected) -->
+                            <div class="input-filed" id="domain-field" style="display:none;">
+                                <i class='bx bx-briefcase'></i>
+                                <input type="text" placeholder="Domain" name="domain" required>
+                            </div>
+
+                            <!-- Competence (visible only if student is selected) -->
+                            <div class="input-filed" id="competence-field" style="display:none;">
+                                <i class='bx bx-code'></i>
+                            <input type="text" placeholder="Competence" name="competence" required>
+                                <!-- <textarea placeholder="Competence" id="competence" required></textarea> -->
+                            </div>
+                    </div>
+            <div class="input-box">
+                            <!-- Profile Picture (visible only if student is selected) -->
+                            <div class="input-filed" name="profile-picture-field" style="display:none;">
+                                <i class='bx bxs-camera'></i>
+                                <input type="file" name="profile-picture" accept="image/*" required>
+                            </div>
+            </div>
+                            <!-- <div class ="confirme"> -->
+                <label><input type="checkbox" > I hereby declare that the above information provided is true and correct</label>
+            <!-- </div> -->
+
+                            <!-- Submit Button -->
+                        <button type="submit" class="btn"> Register</button>
+            </div>
+            
+
+                </div>
+
+            </div>
+
+        </form>
+
+    </div>
+        <script src="r.js"></script>
+    
+</body>
+</html>

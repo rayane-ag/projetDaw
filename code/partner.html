@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Student Selection</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <style>
+    /* General Styles */
+    body {
+      font-family: 'Arial', sans-serif;
+      margin: 0;
+      padding: 0;
+      background: linear-gradient(to right, #d8e9f7, #b8d9f4);
+      color: #333;
+    }
+
+    /* Header Styles */
+    .header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 10px 20px;
+      background-color: #00acc0; 
+      color: white;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    }
+
+    .header img {
+      width: 50px;
+      height: 50px;
+    }
+
+    .header input {
+      padding: 8px 15px;
+      width: 250px;
+      border: none;
+      border-radius: 20px;
+      font-size: 1rem;
+    }
+
+    .header .search-icon {
+      position: absolute;
+      right: 10px;
+      top: 50%;
+      transform: translateY(-50%);
+      color: #00acc0; 
+      font-size: 1.2rem;
+    }
+
+    .container {
+      max-width: 900px;
+      margin: 20px auto;
+      padding: 20px;
+      background: #ffffff;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+      border-radius: 10px;
+    }
+
+    h1 {
+      text-align: center;
+      color: #00acc0; 
+      margin-bottom: 20px;
+      font-size: 2.5rem;
+    }
+
+    .student-card {
+      padding: 15px;
+      margin-bottom: 15px;
+      background: #f9f9f9;
+      border: 1px solid #ddd;
+      border-radius: 10px;
+      cursor: pointer;
+      transition: transform 0.2s;
+    }
+
+    .student-card:hover {
+      transform: scale(1.02);
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    }
+
+    .student-info {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .student-info h3 {
+      margin: 0;
+      font-size: 1.2rem;
+      color: #00acc0; 
+    }
+
+    .status {
+      padding: 5px 15px;
+      border-radius: 5px;
+      color: white;
+      font-weight: bold;
+      display: inline-block;
+    }
+
+    .status.selected {
+      background-color: #4dd0e1; 
+    }
+
+    .status.unselected {
+      background-color: rgba(77, 208, 225, 0.34);
+    }
+
+    .details {
+      margin-top: 10px;
+      display: none; /* Initially hidden */
+      border-top: 1px solid #ddd;
+      padding-top: 10px;
+    }
+
+    .footer {
+      text-align: center;
+      margin-top: 30px;
+      font-size: 0.9rem;
+      color: #555;
+    }
+
+    /* Updated Select Button */
+    .select-icon {
+      font-size: 1rem; /* Smaller size */
+      color: white;
+      cursor: pointer;
+      display: inline-block;
+      visibility: hidden; /* Initially hidden */
+    }
+
+    .select-icon.unselected {
+      background-color: #87CEFA; /* Light Blue */
+      border-radius: 50%; /* Round shape */
+      padding: 6px; /* Smaller padding */
+      visibility: visible; /* Show only if unselected */
+      transition: background-color 0.3s ease;
+    }
+
+    .select-icon.unselected:hover {
+      background-color: #4682B4; /* Darker Blue on hover */
+    }
+
+    /* Updated Message Icon */
+    .message-icon {
+      font-size: 1.5rem;
+      color: #00ACC1; 
+      cursor: pointer;
+    }
+
+    .message-container {
+      margin-top: 15px;
+      display: none;
+      background: #f1f1f1;
+      padding: 10px;
+      border-radius: 8px;
+    }
+
+    .message-input {
+      width: 100%;
+      padding: 10px;
+      margin-top: 5px;
+      border-radius: 5px;
+      border: 1px solid #ddd;
+    }
+
+    .send-btn {
+      padding: 8px 15px;
+      background-color: #007bff; 
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      margin-top: 10px;
+    }
+
+    .send-btn:hover {
+      background-color: #0056b3;
+    }
+
+    .select-btn {
+      margin-top: 10px;
+      padding: 8px 15px;
+      background-color: #00acc0;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    .select-btn:hover {
+      background-color: #008c99;
+    }
+
+    .confirmation-message {
+      margin-top: 10px;
+      color: green;
+      font-weight: bold;
+      display: none; /* Initially hidden */
+    }
+
+  </style>
+</head>
+<body>
+  <!-- Header with Logo and Search Bar -->
+  <div class="header">
+    <img src="../pictures/Screenshot__301_-removebg-preview.png" alt="Logo">
+    <div style="position: relative; width: 250px;">
+      <input type="text" id="search" placeholder="Search for a student...">
+      <i class="fas fa-search search-icon"></i> 
+    </div>
+  </div>
+
+  <!-- Main Content -->
+  <div class="container">
+    <h1>Student Selection</h1>
+    <div id="students-container">
+      <!-- Student Cards will be dynamically generated -->
+    </div>
+  </div>
+
+  <div class="footer">Powered by Student Management System</div>
+
+  <script>
+    // Array of Students
+    const students = [
+      { name: "John Doe", specialization: "Computer Science", skills: ["JavaScript", "React", "Node.js"], status: "unselected" },
+      { name: "Jane Smith", specialization: "Design", skills: ["Photoshop", "Illustrator", "UI/UX"], status: "unselected" },
+      { name: "Michael Brown", specialization: "Data Science", skills: ["Python", "Machine Learning", "SQL"], status: "unselected" },
+      { name: "Emily Davis", specialization: "Marketing", skills: ["SEO", "Content Writing", "Social Media"], status: "unselected" }
+    ];
+
+    const studentsContainer = document.getElementById("students-container");
+    const searchInput = document.getElementById("search");
+
+    // Display Students
+    function displayStudents(filter = "") {
+      studentsContainer.innerHTML = ""; // Clear the container
+      const filteredStudents = students.filter(student =>
+        student.name.toLowerCase().includes(filter.toLowerCase())
+      );
+      filteredStudents.forEach((student, index) => {
+        const card = document.createElement("div");
+        card.classList.add("student-card");
+        card.innerHTML = ` 
+          <div class="student-info" onclick="toggleDetails(${index})">
+            <h3>${student.name}</h3>
+            <div style="display: flex; align-items: center;">
+              <i class="fas fa-check select-icon ${student.status}" onclick="selectStudent(${index})"></i> 
+              <i class="fas fa-comment-alt message-icon" onclick="toggleMessage(${index})"></i>
+            </div>
+          </div>
+          <div class="details" id="details-${index}">
+            <p><strong>Specialization:</strong> ${student.specialization}</p>
+            <p><strong>Skills:</strong> ${student.skills.join(", ")}</p>
+            <p><strong>Status:</strong> <span class="status ${student.status}">${capitalize(student.status)}</span></p>
+          </div>
+          <div class="message-container" id="message-container-${index}">
+            <textarea class="message-input" placeholder="Type your message here..."></textarea>
+            <button class="send-btn" onclick="sendMessage(${index})">Send</button>
+            <p class="confirmation-message" id="confirmation-${index}">Message sent successfully!</p>
+          </div>
+        `;
+        studentsContainer.appendChild(card);
+      });
+    }
+
+    // Toggle Message Input
+    function toggleMessage(index) {
+      const messageContainer = document.getElementById(`message-container-${index}`);
+      messageContainer.style.display = messageContainer.style.display === "block" ? "none" : "block";
+    }
+
+    // Send Message
+    function sendMessage(index) {
+      const confirmationMessage = document.getElementById(`confirmation-${index}`);
+      confirmationMessage.style.display = "block";
+      setTimeout(() => {
+        confirmationMessage.style.display = "none";
+      }, 2000);
+    }
+
+    // Toggle Details View
+    function toggleDetails(index) {
+      const details = document.getElementById(`details-${index}`);
+      details.style.display = details.style.display === "block" ? "none" : "block";
+    }
+
+    // Select or Unselect Student
+    function selectStudent(index) {
+      const student = students[index];
+      student.status = student.status === "unselected" ? "selected" : "unselected";
+      displayStudents(searchInput.value); // Re-render students
+    }
+
+    // Capitalize first letter
+    function capitalize(str) {
+      return str.charAt(0).toUpperCase() + str.slice(1);
+    }
+
+    // Search functionality
+    searchInput.addEventListener("input", () => {
+      displayStudents(searchInput.value);
+    });
+
+    // Initial display
+    displayStudents();
+  </script>
+</body>
+</html>

@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
+
+    <title>studentDashbord</title>
+    <link rel="stylesheet" href="splitstud.css" />
+    <!-- <style>
+      body {
+        font-family: "Poppins", sans-serif;
+        margin: 0;
+        padding: 0;
+        background-color: #f4f6f9;
+      }
+
+      .container {
+        display: flex;
+        min-height: 100vh;
+        justify-content: space-between;
+        padding: 20px;
+        flex-wrap: wrap;
+      }
+
+      /* Sidebar */
+      .sidebar {
+        width: 250px;
+        background: linear-gradient(0deg, #00acc0 0%, rgba(77, 208, 225, 0) 100%, #f3fbfc 100%);
+        border-radius: 24px;
+        padding: 20px;
+        position: relative;
+        margin-right: 20px;
+      }
+
+      .profile-image {
+        width: 100px;
+        height: 100px;
+        background: #4dd0e1;
+        border-radius: 50%;
+        margin-bottom: 30px;
+      }
+
+      .menu {
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+      }
+
+      .menu-item {
+        text-align: center;
+        color: white;
+        font-size: 16px;
+        font-weight: 400;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+      }
+
+      .menu-item:hover {
+        color: #f3fbfc;
+      }
+
+      .menu-item .bx {
+        font-size: 20px;
+      }
+
+      /* Main section */
+      .main {
+        flex-grow: 1;
+        padding: 20px;
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+      }
+
+      .header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 20px;
+        background: #ffffff;
+        box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1);
+        border-radius: 12px;
+      }
+
+      .search-section {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        position: relative;
+        width: 100%;
+      }
+
+      .search-input {
+        padding: 8px 30px 8px 10px;
+        font-size: 14px;
+        border-radius: 25px;
+        border: 1px solid #ddd;
+        width: 100%;
+        max-width: 250px;
+        padding-right: 40px;
+      }
+
+      /* .search-icon {
+        position: absolute;
+        right: 10px;
+        top: 50%;
+        transform: translateY(-50%);
+        color: #aaa;
+      } */
+
+      .icons-section img {
+        width: 20px;
+        height: 20px;
+        margin-left: 15px;
+      }
+
+      .welcome-message {
+        text-align: center;
+      }
+
+      /* Your Information section */
+      .card {
+        background: #4dd0e1;
+        border-radius: 24px;
+        padding: 30px;
+        box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1);
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+        align-items: center;
+      }
+
+      .card-info {
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+        align-items: center;
+        text-align: center;
+      }
+
+      .card-info h2 {
+        color: #ffffff;
+        font-size: 40px;
+        font-weight: 700;
+        margin-bottom: 15px;
+      }
+
+      .card-info p {
+        color: #ffffff;
+        font-size: 18px;
+        margin: 0;
+      }
+
+      .card-info .info-item {
+        display: flex;
+        align-items: center;
+        gap: 15px;
+        justify-content: center;
+      }
+
+      .card-info .info-item i {
+        color: #00acc1;
+        font-size: 30px;
+      }
+
+      .action-cards {
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+      }
+
+      .action-card {
+        background-color: rgba(77, 208, 225, 0.34);
+        padding: 20px;
+        border-radius: 24px;
+        box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1);
+        cursor: pointer;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+
+      .action-card:hover {
+        background-color: rgba(77, 208, 225, 0.5);
+      }
+
+      .action-text {
+        color: #00acc1;
+        font-size: 18px;
+        font-weight: 600;
+        text-align: center;
+      }
+
+      .view-button {
+        background-color: #00acc1;
+        color: white;
+        padding: 8px 15px;
+        border-radius: 20px;
+        text-decoration: none;
+        font-weight: 500;
+      }
+
+      .view-button:hover {
+        background-color: #028b96;
+      }
+
+      .information-section {
+        display: flex;
+        gap: 20px;
+        justify-content: space-between;
+        flex-wrap: wrap;
+      }
+
+      .information-section .card {
+        flex: 1;
+        min-width: 300px;
+      }
+
+      .action-cards {
+        flex: 1;
+        min-width: 300px;
+      }
+
+      /* Responsive adjustments */
+      @media (max-width: 768px) {
+        .container {
+          flex-direction: column;
+        }
+
+        .sidebar {
+          width: 100%;
+          margin-bottom: 20px;
+        }
+
+        .main {
+          padding: 10px;
+        }
+
+        .header {
+          flex-direction: column;
+          align-items: flex-start;
+        }
+
+        .icons-section {
+          margin-top: 20px;
+        }
+
+        .information-section {
+          flex-direction: column;
+          align-items: flex-start;
+        }
+
+        .action-cards {
+          gap: 15px;
+        }
+      }
+    </style> -->
+  </head>
+  <body>
+    <div class="container">
+      <div class="sidebar" id="sidebar">
+  <div class="profile-image">
+    <i class="fa fa-user"></i>
+  </div>
+  <div class="menu">
+    <a href="#" class="menu-item active">
+      <i class="bx bx-user"></i> Edit First Name
+    </a>
+    <a href="#" class="menu-item">
+      <i class="bx bx-user"></i> Edit Last Name
+    </a>
+    <a href="#" class="menu-item">
+      <i class="bx bx-phone"></i> Edit Phone Number
+    </a>
+    <a href="#" class="menu-item">
+      <i class="bx bx-envelope"></i> Edit Email
+    </a>
+    <a href="#" class="menu-item">
+      <i class="bx bx-lock"></i> Edit Password
+    </a>
+    <a href="#" class="menu-item">
+      <i class="bx bx-briefcase"></i> Edit Competence
+    </a>
+    <a href="#" class="menu-item logout">
+      <i class="bx bx-log-out"></i> Logout
+    </a>
+  </div>
+</div>
+
+      <!-- Main content -->
+      <div class="main">
+        <div class="header">
+          <div class="search-section">
+            <input type="text" placeholder="Search..." class="search-input" />
+          </div>
+          <div class="icons-section">
+            <i class="bx bxs-bell"></i>
+            <i class="bx bxs-message-dots"></i>
+          </div>
+        </div>
+      <div class="welcome-message">
+  <div class="welcome-content">
+    <h1>Welcome back, XXX!</h1>
+  </div>
+  <div class="welcome-image">
+    <img src="../pictures/Screenshot__301_-removebg-preview.png" alt="Graduation Icon" />
+  </div>
+</div>
+
+
+
+        <div class="information-section">
+          <div class="card">
+            <div class="card-info">
+              <h2>Your Information</h2>
+              <div class="info-item">
+                <i class="bx bx-bookmark"></i>
+                <p>Topic: <span>Topic Name</span></p>
+              </div>
+              <div class="info-item">
+                <i class="bx bx-group"></i>
+                <p>Team: <span>Team Name</span></p>
+              </div>
+              <div class="info-item">
+                <i class="bx bx-chalkboard"></i>
+                <p>Teacher: <span>Teacher Name</span></p>
+              </div>
+            </div>
+          </div>
+          <div class="action-cards">
+            <div class="action-card">
+              <div class="action-text">Choose partner</div>
+              <a href="partner.html" class="view-button">View</a>
+            </div>
+            <div class="action-card">
+              <div class="action-text">Choose teacher and topics</div>
+              <a href="teacher_topic.html" class="view-button">View</a>
+            </div>
+            <div class="action-card">
+              <div class="action-text">Click here for team details</div>
+              <a href="team_details.html" class="view-button">View</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script src="split.css"></script>
+  </body>
+</html>

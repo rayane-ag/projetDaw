@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Groups List</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+    />
+    <style>
+      /* General Styles */
+      body {
+        font-family: "Arial", sans-serif;
+        margin: 0;
+        padding: 0;
+        background: linear-gradient(to right, #d8e9f7, #b8d9f4);
+        color: #333;
+      }
+
+      /* Header Styles */
+      .header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 10px 20px;
+        background-color: #00acc0; 
+        color: white;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+      }
+
+      .header img {
+        width: 50px;
+        height: 50px;
+      }
+
+      .header input {
+        padding: 8px 15px;
+        width: 250px;
+        border: none;
+        border-radius: 20px;
+        font-size: 1rem;
+      }
+
+      .header .search-icon {
+        position: absolute;
+        right: 10px;
+        top: 50%;
+        transform: translateY(-50%);
+        color: #00acc0; 
+        font-size: 1.2rem;
+      }
+
+      /* Container for List */
+      .container {
+        max-width: 900px;
+        margin: 20px auto;
+        padding: 20px;
+        background: #ffffff;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        border-radius: 10px;
+      }
+
+      h1 {
+        text-align: center;
+        color: #00acc0;
+        margin-bottom: 20px;
+        font-size: 2.5rem;
+      }
+
+      .group-list {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+      }
+
+      .group-card {
+        padding: 15px;
+        background: #f9f9f9;
+        border: 1px solid #ddd;
+        border-radius: 10px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        cursor: pointer;
+        transition: transform 0.2s;
+      }
+
+      .group-card:hover {
+        transform: scale(1.02);
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+      }
+
+      .group-card div {
+        display: flex;
+        align-items: center;
+      }
+
+      .group-card span {
+        margin-left: 10px;
+        font-size: 1rem;
+        color: #00acc0;
+      }
+
+      .footer {
+        text-align: center;
+        margin-top: 30px;
+        font-size: 0.9rem;
+        color: #555;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Header -->
+    <div class="header">
+      <img src="../pictures/Screenshot__301_-removebg-preview.png" alt="Logo" />
+      <div style="position: relative; width: 250px">
+        <input type="text" id="search" placeholder="Search for a group..." />
+        <i class="fas fa-search search-icon"></i>
+      </div>
+    </div>
+
+    <!-- Main Content -->
+    <div class="container">
+      <h1>Group List</h1>
+      <div class="group-list" id="groups-container">
+        <!-- Group Cards will be dynamically generated here -->
+      </div>
+    </div>
+
+    <div class="footer">Powered by Group Management System</div>
+
+    <script>
+      // Array of Groups
+      const groups = [
+        {
+          groupNumber: "Group 1",
+          students: ["Alice", "Bob", "Charlie"],
+          professor: "Dr. John Doe",
+          thesisTitle: "AI in Healthcare",
+        },
+        {
+          groupNumber: "Group 2",
+          students: ["David", "Eva", "Frank"],
+          professor: "Dr. Jane Smith",
+          thesisTitle: "Blockchain and Security",
+        },
+        {
+          groupNumber: "Group 3",
+          students: ["George", "Hannah", "Ivy"],
+          professor: "Dr. Emily Davis",
+          thesisTitle: "Renewable Energy Solutions",
+        },
+      ];
+
+      const groupsContainer = document.getElementById("groups-container");
+      const searchInput = document.getElementById("search");
+
+      // Display Groups
+      function displayGroups(filter = "") {
+        groupsContainer.innerHTML = ""; // Clear the container
+        const filteredGroups = groups.filter((group) =>
+          group.groupNumber.toLowerCase().includes(filter.toLowerCase())
+        );
+
+        filteredGroups.forEach((group, index) => {
+          const groupCard = document.createElement("div");
+          groupCard.classList.add("group-card");
+
+          groupCard.innerHTML = `
+          <div>
+            <strong>${group.groupNumber}</strong>
+            <span>(${group.students.join(", ")})</span>
+          </div>
+          <div>
+            <span>Professor: ${group.professor}</span>
+            <span>Thesis: ${group.thesisTitle}</span>
+          </div>
+        `;
+
+          groupsContainer.appendChild(groupCard);
+        });
+      }
+
+      // Search Event
+      searchInput.addEventListener("input", function () {
+        displayGroups(searchInput.value);
+      });
+
+      // Initial Display
+      displayGroups();
+    </script>
+  </body>
+</html>
