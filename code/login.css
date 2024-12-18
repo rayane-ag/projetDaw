@@ -7,7 +7,7 @@
 }
 
 body {
-    background-image: url('../pictures/Screenshot\ \(258\).png');
+    background-image: url('../pictures/Screenshot\ \(321\).png');
     background-size: cover;
     background-position: center;
     height: 100vh;
@@ -15,7 +15,7 @@ body {
     justify-content: center;
     align-items: center;
     font-family: 'Poopins', sans-serif;
-}
+} 
 
 .container {
     position: relative;
@@ -77,7 +77,7 @@ form {
     outline: none;
     border-radius: 50px;
     cursor: pointer;
-    background-color: #655DBB;
+    background-color: #00acc1;
     color: #fff;
     font-weight: 600;
     margin: 10px 0;
@@ -85,7 +85,7 @@ form {
 }
 
 .btn:hover {
-    background-color: #3E54AC;
+    background-color: #00acc1;
 }
 
 .remember-forget {
@@ -113,26 +113,3 @@ form {
     margin-bottom: 10px;
 }
 
-/* .social-media {
-    display: flex;
-    justify-content: center;
-}
-
-.social-icon {
-    height: 46px;
-    width: 46px;
-    border: 1px solid #cbc5c5;
-    margin: 0 0.45rem;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    color: #dcdada;
-    font-size: 1.1rem;
-    border-radius: 50%;
-    transition: 0.3s;
-}
-
-.social-icon:hover {
-    color: #aca8d5;
-    border-color: #919dcf;
-} */

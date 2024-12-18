@@ -12,7 +12,7 @@ body {
     justify-content: center;
     align-items: center;
     min-height: 100vh;
-    background: url('../pictures/Screenshot\ \(258\).png') no-repeat;
+    background: url('../pictures/Screenshot\ \(321\).png') no-repeat;
     background-size: cover;
     background-position: center;
 
@@ -112,7 +112,7 @@ body {
         outline: none;
         border-radius: 50px;
         cursor: pointer;
-        background-color: #655DBB;
+        background-color: #00acc1;
         color: #fff;
         font-weight: 600;
         margin: 10px 0;
@@ -120,7 +120,7 @@ body {
 
 }
 .wrapper.btn:hover {
-    background-color: #3E54AC;
+    background-color:#00acc1;
 }
 
 @media(max-width:576px) {

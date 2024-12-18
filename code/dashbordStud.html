@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet" />
+    <title>Student Dashboard</title>
+    <link rel="stylesheet" href="dashbordStud.css" />
+  </head>
+  <body>
+    <div class="container">
+      <!-- Main content -->
+      <div class="main">
+        <div class="header">
+          <div class="search-section">
+            <input type="text" placeholder="Search..." class="search-input" />
+          </div>
+          <!-- Icons Section -->
+          <div class="icons-section">
+            <i class="bx bxs-bell"></i>
+            <i class="bx bxs-message-dots"></i>
+            <!-- Account Icon with Dropdown -->
+            <div class="account-section">
+              <i class="bx bxs-user-circle account-icon" id="account-icon"></i>
+              <!-- Dropdown Content -->
+              <div class="dropdown-menu" id="dropdown-menu">
+                <a href="#">profile</a>
+                <a href="#">settings</a>
+                <a href="#">Logout</a>
+            </div>
+            </div>
+            </div>
+        </div>
+
+        <!-- Welcome Section -->
+        <div class="welcome-message">
+          <div class="welcome-content">
+            <h1>Welcome back, XXX!</h1>
+          </div>
+          <div class="welcome-image">
+            <img src="../pictures/Screenshot__301_-removebg-preview.png" alt="Graduation Icon" />
+          </div>
+        </div>
+
+        <!-- Information Section -->
+        <div class="information-section">
+          <div class="card">
+            <div class="card-info">
+              <h2>Your Information</h2>
+              <div class="info-item">
+                <i class="bx bx-bookmark"></i>
+                <p>Topic: <span>Topic Name</span></p>
+              </div>
+              <div class="info-item">
+                <i class="bx bx-group"></i>
+                <p>Team: <span>Team Name</span></p>
+              </div>
+              <div class="info-item">
+                <i class="bx bx-chalkboard"></i>
+                <p>Teacher: <span>Teacher Name</span></p>
+              </div>
+            </div>
+          </div>
+          <div class="action-cards">
+            <div class="action-card">
+              <div class="action-text">Choose partner</div>
+              <a href="partner.html" class="view-button">View</a>
+            </div>
+            <div class="action-card">
+              <div class="action-text">Choose teacher and topics</div>
+              <a href="teacher_topic.html" class="view-button">View</a>
+            </div>
+            <div class="action-card">
+              <div class="action-text">Click here for team details</div>
+              <a href="team_details.html" class="view-button">View</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Script to Toggle Dropdown -->
+    <script>
+      const accountIcon = document.getElementById("account-icon");
+      const dropdownMenu = document.getElementById("dropdown-menu");
+
+      accountIcon.addEventListener("click", () => {
+        dropdownMenu.classList.toggle("show");
+      });
+
+      window.addEventListener("click", (e) => {
+        if (!e.target.matches(".account-icon")) {
+          if (dropdownMenu.classList.contains("show")) {
+            dropdownMenu.classList.remove("show");
+          }
+        }
+      });
+    </script>
+  </body>
+</html>
